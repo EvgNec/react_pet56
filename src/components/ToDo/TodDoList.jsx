@@ -30,14 +30,32 @@ const TodDoList = () => {
     console.log('todoList',todoList);
         toast.success('Create successfully');
       };
-      
+      const handleCheckCompleted = id => {
+        setTodoList(prevTodoList => {
+          return prevTodoList.map(todo =>
+            todo.id === id ? { ...todo, completed: !todo.completed } : todo
+          );
+        });
+      };
+      const handleDelete = id => {
+        setTodoList(prevTodoList => {
+          return prevTodoList.filter(todo => todo.id !== id);
+        });
+    
+        toast.error('Delete successfully');
+      };
   return (
     <div>
      <h1>My To-Do list</h1>
 <FormAdd onSubmit={addToDo}/>
      <ul>
      {todoList.map(todo => (
-        <ToDo/>
+        <ToDo          
+        key={todo.id}
+          todo={todo}
+          handleCheckCompleted={handleCheckCompleted}
+          handleDelete={handleDelete}
+          />
      ))}
      </ul>
     </div>
