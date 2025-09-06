@@ -5,12 +5,10 @@ import { nanoid } from 'nanoid';
 import FormAdd from './FormAdd';
 
 const TodDoList = () => {
-    const [todoList, setTodoList] = useState([]);
-
-    useEffect(() => {
+    const [todoList, setTodoList] = useState(() => {
         const localTodo = localStorage.getItem('todo');
-        if (localTodo) setTodoList(JSON.parse(localTodo));
-      }, []);
+        return localTodo ? JSON.parse(localTodo) : [];
+      });      
 
       useEffect(() => {
         todoList && localStorage.setItem('todo', JSON.stringify(todoList));
