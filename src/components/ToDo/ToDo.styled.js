@@ -5,7 +5,7 @@ export const ListItem = styled.li`
   margin: 8px auto;         /* центр по горизонталі */
   padding: 12px;
   border-radius: 8px;
-  background: ${({ completed }) => (completed ? '#e6ffe6' : '#fff')};
+  background: ${({ $completed }) => ($completed ? '#e6ffe6' : '#fff')};
   display: flex;
   justify-content: space-between;
   align-items: flex-start;  /* щоб текст переносився зверху */
@@ -19,12 +19,12 @@ export const LeftBlock = styled.div`
 `;
 
 export const TitleLink = styled.a`
-  color: ${({ completed }) => (completed ? '#777' : '#0077cc')};
-  text-decoration: ${({ completed }) => (completed ? 'line-through' : 'none')};
+  color: ${({ $completed }) => ($completed ? '#777' : '#0077cc')};
+  text-decoration: ${({ $completed }) => ($completed ? 'line-through' : 'none')};
   font-weight: 500;
   cursor: pointer;
 
-  /* переноси довгий текст */
+  /* переносить довгий текст */
   word-wrap: break-word;
   overflow-wrap: anywhere;
   white-space: normal;

@@ -3,7 +3,7 @@ import {DeleteButton, ListItem, LeftBlock, TitleLink } from './ToDo.styled.js'
 
 const ToDo = ({ todo, handleCheckCompleted, handleDelete }) => {
   return (
-<ListItem completed={todo.completed}>
+<ListItem $completed={todo.completed}>
       <LeftBlock>
         {handleCheckCompleted && (
           <input
@@ -15,7 +15,7 @@ const ToDo = ({ todo, handleCheckCompleted, handleDelete }) => {
         <TitleLink
           href={`/todos/${todo.id}`}
           rel="noopener noreferrer"
-          completed={todo.completed}
+          $completed={todo.completed}
         >
           {todo.title}
         </TitleLink>
