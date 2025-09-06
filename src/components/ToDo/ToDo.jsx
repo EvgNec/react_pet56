@@ -1,32 +1,38 @@
 import React from 'react'
+import {DeleteButton, ListItem, LeftBlock, TitleLink } from './ToDo.styled.js'
 
 const ToDo = ({ todo, handleCheckCompleted, handleDelete }) => {
   return (
-<li className='list-group-item'>
-			<div>
-				<div>
-					{handleCheckCompleted && (
-						<input
-							type='checkbox'
-							checked={todo.completed}
-							onChange={() => handleCheckCompleted(todo.id)}
-						/>
-					)}
-                    <a href={`/todos/${todo.id}`} rel="noopener noreferrer">{todo.title}</a>
-				</div>
-				<div className='col'>
-					{handleDelete && (
-						<button
-							disabled={!todo.completed}
-							type='button'
-							aria-label='Close'
-							onClick={() => handleDelete(todo.id)}
-						>Delete</button>
-					)}
-				</div>
-			</div>
-		</li>
-  )
-}
+<ListItem completed={todo.completed}>
+      <LeftBlock>
+        {handleCheckCompleted && (
+          <input
+            type='checkbox'
+            checked={todo.completed}
+            onChange={() => handleCheckCompleted(todo.id)}
+          />
+        )}
+        <TitleLink
+          href={`/todos/${todo.id}`}
+          rel="noopener noreferrer"
+          completed={todo.completed}
+        >
+          {todo.title}
+        </TitleLink>
+      </LeftBlock>
+
+      {handleDelete && (
+        <DeleteButton
+          disabled={!todo.completed}
+          type='button'
+          onClick={() => handleDelete(todo.id)}
+        >
+          Delete
+        </DeleteButton>
+      )}
+    </ListItem>
+  );
+};
+
 
 export default ToDo
