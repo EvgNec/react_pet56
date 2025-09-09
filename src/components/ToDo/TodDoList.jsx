@@ -3,6 +3,7 @@ import ToDo from './ToDo';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 import FormAdd from './FormAdd';
+import FormSearch from './FormSearch';
 
 const TodDoList = () => {
   const [todoList, setTodoList] = useState(() => {
@@ -51,6 +52,7 @@ const TodDoList = () => {
     <div>
       <h1>My To-Do list</h1>
       <FormAdd onSubmit={addToDo} />
+      <FormSearch filter={filter} setFilter={setFilter} />
              {/* Input для фільтра  */}
             <input
         type="text"
