@@ -53,13 +53,6 @@ const TodDoList = () => {
       <h1>My To-Do list</h1>
       <FormAdd onSubmit={addToDo} />
       <FormSearch filter={filter} setFilter={setFilter} />
-             {/* Input для фільтра  */}
-            <input
-        type="text"
-        placeholder="Filter todos..."
-        value={filter}
-        onChange={e => setFilter(e.target.value)}
-      />
       <ul>
         {filteredTodoList.map(todo => (
           <ToDo
